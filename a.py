@@ -18,11 +18,12 @@ class TestModule(loader.Module):
         message_text = ''
         if message.reply_markup:
             if message.reply_markup.rows:
-                for row in message.reply_markup.rows:
-                    for button in row.buttons:
-                        if hasattr(button, 'url'):
-                            button_url = button.url
-                            message_text = button_url
+                if message.reply_markup.rows:
+                    for row in message.reply_markup.rows:
+                        for button in row.buttons:
+                            if hasattr(button, 'url'):
+                                button_url = button.url
+                                message_text = button_url
         else:
             message_text = message.message
 
